@@ -1,0 +1,30 @@
+{% extends 'base_template.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/Tareas_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="add">
+    <form method="POST">
+        <label>Agregar Tarea</label>
+        <input class="tasks" type="text" name="task_to_add">
+        <input class="bt" type="submit" name="bt_add">
+    </form>
+</div>
+<div class="lower">
+    <form method="POST">
+        {% for task in tasks %}
+            <div class="cont">
+                <div class="task">
+                    <input class="t" type="checkbox" name="{{loop.index}}">
+                    <label class="i" > {{task}} </label><br>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="bt">
+            <input type="submit" value="Update" name="bt_del">
+        </div>
+    </form>
+</div>
+{% endblock %}
